@@ -5,13 +5,13 @@
 # a) Добавьте игру против бота
 # b) Подумайте как наделить бота ""интеллектом""
 import random
-def test_enter(name):
+def test_enter(name) -> int:
     a = int(input(f'{name}, возьмите конфеты: '))
     while 0 <= a > 28: # проверка на число
       a = int(input(f'{name} Возьмите конфеты. (За один ход можно забрать не более чем 28 конфет!) : '))
     return a
 
-def bot_calc(tot):
+def bot_calc(tot) ->int:
     a =  random.randint(1,29)
     while tot-a < 28 and tot > 29 :  # умный бот
         a = random.randint(1,29)
@@ -19,6 +19,7 @@ def bot_calc(tot):
 
 total = 80
 player = 'Пользователь'
+# player2 = 'Пользователь №2'
 flag = random.randint(1,3)
 while total > 28:
     if flag == 1:
@@ -27,7 +28,7 @@ while total > 28:
         flag = 2
         print(f'Ты взял {candy} конфет. Количество оставшихся конфет {total}')
     else:
-        candy = bot_calc(total)
+        candy = bot_calc(total) # random.randint(1,29) честная игра или test_enter(player2) два пользователя
         total -= candy
         flag = 1
         print(f'Бот взял {candy} конфет. Количество оставшихся конфет {total}')
